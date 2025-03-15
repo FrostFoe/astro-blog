@@ -64,7 +64,7 @@ html[data-theme="dark"] {
 
   /* Default Font: Bengali */
   body {
-    @apply bg-background text-foreground selection:bg-accent/75 selection:text-background flex min-h-svh flex-col;
+    @apply flex min-h-svh flex-col bg-background text-foreground selection:bg-accent/75 selection:text-background;
     font-family: "BnFont", monospace;
   }
 
@@ -75,7 +75,7 @@ html[data-theme="dark"] {
 
   a,
   button {
-    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed focus-visible:outline-2;
+    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
 
   button:not(:disabled),
