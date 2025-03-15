@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://frostfoe.netlify.app/sitemap-index.xml
