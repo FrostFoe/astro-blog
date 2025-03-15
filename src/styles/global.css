@@ -1,8 +1,28 @@
 @import "tailwindcss";
 @import "./typography.css";
 
+/* Import Bengali Font (Default) */
+@font-face {
+  font-family: "BnFont";
+  src: url("/fonts/bn-font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Import English Font */
+@font-face {
+  font-family: "EnFont";
+  src: url("/fonts/en-font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Variant for Dark Mode */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* Light Theme */
 :root,
 html[data-theme="light"] {
   --background: #fdfdfd;
@@ -12,6 +32,7 @@ html[data-theme="light"] {
   --border: #ece9e9;
 }
 
+/* Dark Theme */
 html[data-theme="dark"] {
   --background: #212737;
   --foreground: #eaedf3;
@@ -20,6 +41,7 @@ html[data-theme="dark"] {
   --border: #ab4b08;
 }
 
+/* Tailwind Theme Overrides */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -28,32 +50,46 @@ html[data-theme="dark"] {
   --color-border: var(--border);
 }
 
+/* Base Styles */
 @layer base {
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
+
   html {
     @apply overflow-y-scroll scroll-smooth;
   }
+
+  /* Default Font: Bengali */
   body {
-    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+    @apply bg-background text-foreground selection:bg-accent/75 selection:text-background flex min-h-svh flex-col;
+    font-family: "BnFont", monospace;
   }
+
+  /* English Font for Elements with .en Class */
+  .en {
+    font-family: "EnFont", sans-serif;
+  }
+
   a,
   button {
-    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed focus-visible:outline-2;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
   section,
   footer {
     @apply mx-auto max-w-3xl px-4;
   }
 }
 
+/* Active Navigation */
 .active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
